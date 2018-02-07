@@ -4,7 +4,7 @@ Tools for using the NANOAOD postprocessing framework for JMAR.
 
 ## Obtaining JMAR NANOAOD
 
-You should first follow the directions outlined in the [NanoAODJMAR](https://github.com/cms-jet/NanoAODJMAR) repository. This repository assumes the 
+You should first follow the directions outlined in the [NanoAODJMAR](https://github.com/cms-jet/NanoAODJMAR) repository. This repository assumes the NANOAOD files follow that structure. 
 
 ## JMAR NANOAOD Analysis : With CMSSW
 
