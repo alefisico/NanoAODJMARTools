@@ -53,6 +53,25 @@ cd PhysicsTools/NanoAODJMARTools/test
 python postproc_softdrop.py
 ```
 
+If you just want the library for the `SoftDrop` python interface, do this in python (after scram above):
+
+```python 
+import fastjet
+import ROOT
+
+ROOT.gSystem.Load("libPhysicsToolsNanoAODJMARTools.so")
+beta=0.0
+zcut=0.1
+R=0.8
+ptmin=200.
+sd = ROOT.SoftDropWrapper(beta,zcut, R, ptmin)
+
+#### IN YOUR EVENT LOOP:
+        pfCandsVec = ROOT.vector("TLorentzVector")()
+        for p in pfCands :
+            pfCandsVec.push_back( ROOT.TLorentzVector( p.p4().Px(), p.p4().Py(), p.p4().Pz(), p.p4().E()) )
+        sdjets = self.sd.result( pfCandsVec )
+```
 
 
 
@@ -64,4 +83,6 @@ Coming soon.
 ## Technical details
 
 This assumes you have [fastjet 3.3.0](http://fastjet.fr/repo/doxygen-3.3.0/), which implements the python front-end to fastjet. The `fastjet-contrib` packages do not yet have a python implementation, so this is implemented [here](https://github.com/cms-jet/NanoAODJMARTools/blob/master/src/Recluster.cc) and [here](https://github.com/cms-jet/NanoAODJMARTools/blob/master/interface/Recluster.h).
+
+
 
