@@ -45,6 +45,13 @@ scram setup fastjet
 scram setup fastjet-contrib
 ```
 
+Add fastjet to your python path:
+```
+setenv PYTHONPATH /uscms_data/d2/rappocc/fastjet/bare/install_330/lib/python2.7/site-packages:$PYTHONPATH
+
+(or export in bash)
+```
+
 
 Compile and run:
 ```
