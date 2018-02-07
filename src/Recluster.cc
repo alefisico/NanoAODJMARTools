@@ -1,18 +1,14 @@
 #include "PhysicsTools/NanoAODJMARTools/interface/Recluster.h"
 #include "fastjet/PseudoJet.hh"
 
-SoftDropWrapper::SoftDropWrapper(float beta, float zcut) :
-  fastjet::contrib::SoftDrop(beta,zcut)
+SoftDropWrapper::SoftDropWrapper(float beta, float zcut, float R, float ptmin) :
+  fastjet::contrib::SoftDrop(beta,zcut), R_(R), ptmin_(ptmin)
 {
-  R_ = 0.8;
-  ptmin_ = 200.0;
 }
  
 SoftDropWrapper::SoftDropWrapper() :
-  fastjet::contrib::SoftDrop(0.0,0.1)
+  fastjet::contrib::SoftDrop(0.0,0.1), R_(0.8), ptmin_(200)
 {
-  R_ = 0.8;
-  ptmin_ = 200.0;
 }
 
 std::vector<fastjet::PseudoJet> SoftDropWrapper::result( std::vector<TLorentzVector> const & particles )

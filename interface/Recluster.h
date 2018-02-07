@@ -9,7 +9,7 @@
 
 class SoftDropWrapper : fastjet::contrib::SoftDrop {
  public:
-  SoftDropWrapper(float beta, float zcut);
+  SoftDropWrapper(float beta, float zcut, float R, float ptmin);
   SoftDropWrapper();
 
   std::vector<fastjet::PseudoJet> result( std::vector<TLorentzVector> const & jet );

@@ -9,12 +9,15 @@ from PhysicsTools.NanoAODTools.postprocessing.framework.eventloop import Module
 from PhysicsTools.NanoAODTools.postprocessing.tools import matchObjectCollection
 
 class softDropProducer(Module):
-    def __init__(self, beta=0.0, zcut=0.1, bname="sdb0"):
+    def __init__(self, beta=0.0, zcut=0.1, bname="sdb0", R=0.8, ptmin=200.):
         self.writeHistFile=True
         
         
         self.beta = beta
         self.zcut = zcut
+        self.R = R
+        self.ptmin = ptmin
+
         self.jetBranchName = "FatJet"
         self.genJetBranchName = "GenJetAK8"
         self.rhoBranchName = "fixedGridRhoFastjetAll"
@@ -28,7 +31,7 @@ class softDropProducer(Module):
         
 
     def beginJob(self, histFile, histDirName):
-        self.sd = ROOT.SoftDropWrapper(self.beta,self.zcut)
+        self.sd = ROOT.SoftDropWrapper(self.beta,self.zcut, self.R, self.ptmin)
         Module.beginJob(self, histFile, histDirName)
         self.addObject(ROOT.TH1F('h_ak8sdm_'+self.bname,   'h_ak8sdm_'+self.bname, 25, 0, 250) )
 
